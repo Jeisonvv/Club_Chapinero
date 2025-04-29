@@ -1,0 +1,40 @@
+---
+import Header from "../components/header/header.astro";
+const { title = "como estas" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/chapinero.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+	margin: 0;
+    margin-top:3rem;
+    width: 100vw;
+    height: 100vh;
+    background: #091f8f;
+    background: radial-gradient(
+      circle,
+      rgba(9, 31, 143, 1) 0%,
+      rgba(94, 3, 21, 1) 100%
+    );
+  }
+  @media (min-width: 768px){
+	body{
+		margin-top: 10rem;
+	}
+  }
+</style>
