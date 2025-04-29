@@ -1,0 +1,204 @@
+---
+import { Image } from "astro:assets";
+const links = [
+  {
+    href: "/",
+    text: "Inicio",
+  },
+  {
+    href: "/servicios",
+    text: "Servicios",
+  },
+  {
+    href: "/contacto",
+    text: "Contacto",
+  },
+];
+---
+
+<header class="header">
+  <nav class="nav">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
+      {
+        links.map((link) => (
+            <li>
+                <a href={link.href} class="nav-link-a">{link.text}</a>
+            </li>
+
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* Mobile first */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4.5rem;
+    padding: 1rem;
+    background-image: url("/portada1.jpg");
+    background-size: cover;
+    background-size: 150%;
+    background-position: center;
+    background-position-y: -30px;
+    color: white;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .menu-toggle {
+    position: absolute; /* Ahora sí lo podemos mover libremente dentro del header */
+    top: 50%;
+    top: 1.5rem; /* Centrado verticalmente */
+    right: 2rem; /* Separado 1rem del borde derecho */
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 50;
+  }
+
+  .nav-links {
+    position: fixed; /* antes era absolute */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    right: 0;
+    top: -30px; /* no top: 1rem */
+    height: 100vh; /* no 8rem */
+    width: 8rem;
+    background: linear-gradient(
+      to left,
+      rgb(0, 0, 0) 0%,
+      rgba(20, 1, 96, 0.77) 100%
+    );
+    list-style: none;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease,
+      visibility 0s linear 0.5s;
+    box-shadow: 0px 0px 10px rgba(246, 187, 187, 0.5);
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-links li a {
+    padding: 10px;
+    background-color: black;
+    border-radius: 0.5rem;
+    border: solid 1px rgb(12, 12, 12);  
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Cuando esté abierto */
+  .nav.open .nav-links {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible; /* Ahora sí visible inmediatamente */
+    pointer-events: auto;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease,
+      visibility 0s linear 0s; /* <-- importante */
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        height: 10rem;
+        padding: 1rem 2rem;
+        background-image: url("/portada1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-position-y: -5rem;
+    }
+
+    
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    width: 50%;
+    position: absolute;
+    top: 1.rem;
+    right: 3.5rem;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: none;
+    height: auto;
+    width: auto;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 2rem;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+  .nav-links li a {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 2.5rem;
+    border: solid 1px rgb(18, 19, 18);
+    
+  }
+  .nav-link-a{
+    background: #f5f5f588;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(1.5rem);
+  }
+  
+  
+}
+</style>
+
+<script type="module" is:inline>
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuToggle?.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+</script>
