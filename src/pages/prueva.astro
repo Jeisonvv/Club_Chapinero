@@ -1,0 +1,132 @@
+<main class="container">
+    <h1>Scroll Animations</h1>
+    <section id="boxes">
+      <div class="box">Elemento 1</div>
+      <div class="box">Elemento 2</div>
+      <div class="box">Elemento 3</div>
+      <div class="box">Elemento 4</div>
+      <div class="box">Elemento 5</div>
+      <div class="box">Elemento 6</div>
+      <div class="box">Elemento 7</div>
+      <div class="box">Elemento 8</div>
+      <div class="box">Elemento 9</div>
+      <div class="box">Elemento 10</div>
+      <div class="box">Elemento 11</div>
+      <div class="box">Elemento 12</div>
+      <div class="box">Elemento 1</div>
+      <div class="box">Elemento 2</div>
+      <div class="box">Elemento 3</div>
+      <div class="box">Elemento 4</div>
+      <div class="box">Elemento 5</div>
+      <div class="box">Elemento 6</div>
+      <div class="box">Elemento 7</div>
+      <div class="box">Elemento 8</div>
+      <div class="box">Elemento 9</div>
+      <div class="box">Elemento 10</div>
+      <div class="box">Elemento 11</div>
+      <div class="box">Elemento 12</div>
+      <div class="box">Elemento 1</div>
+      <div class="box">Elemento 2</div>
+      <div class="box">Elemento 3</div>
+      <div class="box">Elemento 4</div>
+      <div class="box">Elemento 5</div>
+      <div class="box">Elemento 6</div>
+      <div class="box">Elemento 7</div>
+      <div class="box">Elemento 8</div>
+      <div class="box">Elemento 9</div>
+      <div class="box">Elemento 10</div>
+      <div class="box">Elemento 11</div>
+      <div class="box">Elemento 12</div>
+      <div class="box">Elemento 1</div>
+      <div class="box">Elemento 2</div>
+      <div class="box">Elemento 3</div>
+      <div class="box">Elemento 4</div>
+      <div class="box">Elemento 5</div>
+      <div class="box">Elemento 6</div>
+      <div class="box">Elemento 7</div>
+      <div class="box">Elemento 8</div>
+      <div class="box">Elemento 9</div>
+      <div class="box">Elemento 10</div>
+      <div class="box">Elemento 11</div>
+      <div class="box">Elemento 12</div>
+    </section>
+  </main>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  
+    .container {
+      background-color: #efedd6;
+      font-family: "Roboto", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px 0;
+      overflow: auto; /* Permitir desplazamiento vertical */
+    }
+  
+    h1 {
+      margin: 15px;
+    }
+  
+    .box {
+      background-color: steelblue;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      height: 600px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+      transform: translateX(400%);
+      transition: transform 0.4s ease;
+    }
+  
+    .box:nth-of-type(even) {
+      transform: translateX(-400%);
+    }
+  
+    .box.show {
+      transform: translateX(0);
+    }
+  
+    .box h2 {
+      font-size: 45px;
+    }
+  </style>
+  
+  <script>
+    const boxes = document.querySelectorAll(".box");
+  
+    // Función optimizada con requestAnimationFrame
+    const checkBoxes = () => {
+      const triggerBottom = (window.innerHeight / 5) * 4;
+  
+      boxes.forEach((box) => {
+        const boxTop = box.getBoundingClientRect().top;
+  
+        if (boxTop < triggerBottom) {
+          box.classList.add("show");
+        } else {
+          box.classList.remove("show");
+        }
+      });
+    };
+  
+    // Usar requestAnimationFrame para mejorar el rendimiento
+    const throttleScroll = () => {
+      window.requestAnimationFrame(checkBoxes);
+    };
+  
+    window.addEventListener("scroll", throttleScroll);
+    window.addEventListener("load", checkBoxes);
+  
+    // Agregar soporte táctil para dispositivos móviles
+    window.addEventListener("touchmove", throttleScroll, { passive: true });
+  </script>
+  

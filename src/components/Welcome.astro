@@ -1,6 +1,6 @@
 <main>
   <div class="conatainer">
-    <section class="welcome">
+    <section class="welcome box">
       <h2>CLUB BILLARES CHAPINERO</h2>
       <p>¡Disfruta de una experiencia única!</p>
       <p>
@@ -9,7 +9,7 @@
         grandes premios!
       </p>
     </section>
-	<section class="services">
+	<section class="services box">
 	  <h2>Servicios</h2>
 	  <p>
 		En el Club Billares Chapinero ofrecemos una amplia gama de servicios
@@ -24,7 +24,7 @@
 	  </p>
 
 	</section>
-    <section>
+    <section class="about box">
       <h2>¿Por qué elegirnos?</h2>
       <p>
         En el Club Billares Chapinero, nos enorgullece ofrecer un ambiente
@@ -38,7 +38,7 @@
         somos el lugar favorito de los aficionados al billar en Bogotá!
       </p>
     </section>
-    <section>
+    <section class="contact box">
       <h2>Ubicación</h2>
       <p>
         Estamos ubicados en la Calle 63 # 13-25, Chapinero, Bogotá. Ven y
@@ -65,6 +65,60 @@
       max-width: 90vw;
       text-align: center;
       color: white;
+      overflow-x: hidden;
     }
+    .box {
+     
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+      padding: 0.5rem;
+      border-radius: 10px;
+      box-shadow: 2px 4px 5px rgba(133, 203, 231, 0.3);
+      transform: translateX(400%);
+      transition: transform 0.4s ease;
+    }
+  
+    .box:nth-of-type(even) {
+      transform: translateX(-400%);
+    }
+  
+    .box.show {
+      transform: translateX(0);
+    }
+  
+    
   </style>
 </main>
+<script>
+  const boxes = document.querySelectorAll(".box");
+
+  // Función optimizada con requestAnimationFrame
+  const checkBoxes = () => {
+    const triggerBottom = (window.innerHeight / 5) * 4;
+
+    boxes.forEach((box) => {
+      const boxTop = box.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        box.classList.add("show");
+      } else {
+        box.classList.remove("show");
+      }
+    });
+  };
+
+  // Usar requestAnimationFrame para mejorar el rendimiento
+  const throttleScroll = () => {
+    window.requestAnimationFrame(checkBoxes);
+  };
+
+  window.addEventListener("scroll", throttleScroll);
+  window.addEventListener("load", checkBoxes);
+
+  // Agregar soporte táctil para dispositivos móviles
+  window.addEventListener("touchmove", throttleScroll, { passive: true });
+</script>
