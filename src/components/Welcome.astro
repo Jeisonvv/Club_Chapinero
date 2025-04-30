@@ -1,124 +1,62 @@
-<main>
-  <div class="conatainer">
-    <section class="welcome box">
-      <h2>CLUB BILLARES CHAPINERO</h2>
-      <p>¡Disfruta de una experiencia única!</p>
-      <p>
-        Vive la emoción del billar en uno de los mejores billares de Bogotá. ¡Te
-        esperamos todos los martes con torneos llenos de competencia, pasión y
-        grandes premios!
-      </p>
-    </section>
-	<section class="services box">
-	  <h2>Servicios</h2>
-	  <p>
-		En el Club Billares Chapinero ofrecemos una amplia gama de servicios
-		para que disfrutes al máximo de tu experiencia con nosotros. Contamos
-		con mesas de billar de alta calidad, un bar y restaurante con una
-		deliciosa variedad de comidas y bebidas, y la posibilidad de organizar
-		eventos privados y empresariales.
-	  </p>
-	  <p>
-		Además, organizamos torneos semanales donde podrás competir con otros
-		jugadores y ganar grandes premios. ¡No te lo pierdas!
-	  </p>
+<div class="conatainer">
+  <section class="welcome box">
+    <h2>CLUB BILLARES CHAPINERO</h2>
+    <p>¡Disfruta de una experiencia única!</p>
+    <p>
+      Vive la emoción del billar en uno de los mejores billares de Bogotá. ¡Te
+      esperamos todos los martes con torneos llenos de competencia, pasión y
+      grandes premios!
+    </p>
+  </section>
+  <section class="services box">
+    <h2>Servicios</h2>
+    <p>
+      En el Club Billares Chapinero ofrecemos una amplia gama de servicios para
+      que disfrutes al máximo de tu experiencia con nosotros. Contamos con mesas
+      de billar de alta calidad, un bar y restaurante con una deliciosa variedad
+      de comidas y bebidas, y la posibilidad de organizar eventos privados y
+      empresariales.
+    </p>
+    <p>
+      Además, organizamos torneos semanales donde podrás competir con otros
+      jugadores y ganar grandes premios. ¡No te lo pierdas!
+    </p>
+  </section>
+  <section class="about box">
+    <h2>¿Por qué elegirnos?</h2>
+    <p>
+      En el Club Billares Chapinero, nos enorgullece ofrecer un ambiente
+      acogedor y amigable para todos los amantes del billar. Nuestro equipo de
+      profesionales está siempre dispuesto a ayudarte a mejorar tu juego y
+      disfrutar al máximo de cada partida.
+    </p>
+    <p>
+      Además, contamos con mesas de billar de alta calidad y un servicio
+      excepcional para que te sientas como en casa. ¡Ven y descubre por qué
+      somos el lugar favorito de los aficionados al billar en Bogotá!
+    </p>
+  </section>
+  <section class="contact box">
+    <h2>Ubicación</h2>
+    <p>
+      Estamos ubicados en la Calle 57 # 13-91, Chapinero, Bogotá. Ven y disfruta
+      de una experiencia única en el Club Billares Chapinero. ¡Te esperamos!
+    </p>
+  </section>
+</div>
 
-	</section>
-    <section class="about box">
-      <h2>¿Por qué elegirnos?</h2>
-      <p>
-        En el Club Billares Chapinero, nos enorgullece ofrecer un ambiente
-        acogedor y amigable para todos los amantes del billar. Nuestro equipo de
-        profesionales está siempre dispuesto a ayudarte a mejorar tu juego y
-        disfrutar al máximo de cada partida.
-      </p>
-      <p>
-        Además, contamos con mesas de billar de alta calidad y un servicio
-        excepcional para que te sientas como en casa. ¡Ven y descubre por qué
-        somos el lugar favorito de los aficionados al billar en Bogotá!
-      </p>
-    </section>
-    <section class="contact box">
-      <h2>Ubicación</h2>
-      <p>
-        Estamos ubicados en la Calle 57 # 13-91, Chapinero, Bogotá. Ven y
-        disfruta de una experiencia única en el Club Billares Chapinero. ¡Te
-        esperamos!
-      </p>
-    </section>
-  </div>
-
-  <style>
-    main {
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      background-color: rgba(0, 0, 0, 0.481);
-    }
-    .conatainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 90vw;
-      text-align: center;
-      color: white;
-      overflow-x: hidden;
-    }
-    .box {
-     
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 10px;
-      padding: 0.5rem;
-      border-radius: 10px;
-      box-shadow: 2px 4px 5px rgba(168, 227, 251, 0.3);
-      transform: translateX(400%);
-      transition: transform 0.4s ease;
-    }
+<style>
+  .conatainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+  }
   
-    .box:nth-of-type(even) {
-      transform: translateX(-400%);
-    }
-  
-    .box.show {
-      transform: translateX(0);
-    }
-  
-    
-  </style>
-</main>
-<script>
-  const boxes = document.querySelectorAll(".box");
+</style>
 
-  // Función optimizada con requestAnimationFrame
-  const checkBoxes = () => {
-    const triggerBottom = (window.innerHeight / 5) * 4;
 
-    boxes.forEach((box) => {
-      const boxTop = box.getBoundingClientRect().top;
-
-      if (boxTop < triggerBottom) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
-    });
-  };
-
-  // Usar requestAnimationFrame para mejorar el rendimiento
-  const throttleScroll = () => {
-    window.requestAnimationFrame(checkBoxes);
-  };
-
-  window.addEventListener("scroll", throttleScroll);
-  window.addEventListener("load", checkBoxes);
-
-  // Agregar soporte táctil para dispositivos móviles
-  window.addEventListener("touchmove", throttleScroll, { passive: true });
-</script>

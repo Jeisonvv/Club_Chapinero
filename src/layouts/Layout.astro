@@ -1,6 +1,12 @@
 ---
 import Header from "../components/Header/Header.astro";
-const { title , description } = Astro.props;
+
+const {
+  title = "Club Billares Chapinero",
+  description = "El mejor lugar para disfrutar del billar en Chapinero",
+  image = "/portada1.jpg",
+  url = "https://club-chapinero.vercel.app",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,28 +16,39 @@ const { title , description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/chapinero.png" />
 
+    <!-- Metaetiquetas dinámicas -->
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="keywords" content="billares, chapinero, club, billar" />
-   
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://club-chapinero.vercel.app/portada1.jpg" />
-<!-- Ruta de la imagen -->
+    <meta property="og:image" content={`${url}${image}`} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://club-chapinero.vercel.app" />    <title>{title}</title>
+    <meta property="og:url" content={url} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <title>{title}</title>
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 
 <style>
   html,
   body {
-	margin: 0;
-    margin-top:3rem;
+    margin: 0;
+    margin-top: 3rem;
     width: 100vw;
     height: 100vh;
     background: #091f8f;
@@ -40,10 +57,50 @@ const { title , description } = Astro.props;
       rgba(9, 31, 143, 1) 0%,
       rgba(94, 3, 21, 1) 100%
     );
+    body {
+      color: #fff;
+    }
   }
-  @media (min-width: 768px){
-	body{
-		margin-top: 10rem;
-	}
+  main {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+ 
+  @media (min-width: 768px) {
+    body {
+      margin-top: 10rem;
+    }
   }
 </style>
+<script>
+  const boxes = document.querySelectorAll(".box");
+
+  // Función optimizada con requestAnimationFrame
+  const checkBoxes = () => {
+    const triggerBottom = (window.innerHeight / 5) * 4;
+
+    boxes.forEach((box) => {
+      const boxTop = box.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        box.classList.add("show");
+      } else {
+        box.classList.remove("show");
+      }
+    });
+  };
+
+  // Usar requestAnimationFrame para mejorar el rendimiento
+  const throttleScroll = () => {
+    window.requestAnimationFrame(checkBoxes);
+  };
+
+  window.addEventListener("scroll", throttleScroll);
+  window.addEventListener("load", checkBoxes);
+
+  // Agregar soporte táctil para dispositivos móviles
+  window.addEventListener("touchmove", throttleScroll, { passive: true });
+</script>
