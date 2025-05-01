@@ -34,8 +34,6 @@ import "../styles/global.css";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-   
-
     <title>{title}</title>
   </head>
   <body>
@@ -70,15 +68,27 @@ import "../styles/global.css";
     justify-content: center;
     font-size: 1.2rem;
   }
- 
+
   @media (min-width: 768px) {
     body {
       margin-top: 10rem;
     }
   }
 </style>
-<script>
+<script type="module">
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.querySelector(".header_nav");
+
+  console.log("menuToggle", menuToggle);
+  console.log("nav", nav);
+
+  menuToggle?.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+</script>
+<script type="module">
   const boxes = document.querySelectorAll(".box");
+  console.log(boxes);
 
   // Función optimizada con requestAnimationFrame
   const checkBoxes = () => {
@@ -88,9 +98,9 @@ import "../styles/global.css";
       const boxTop = box.getBoundingClientRect().top;
 
       if (boxTop < triggerBottom) {
-        box.classList.add("show");
+        box.classList.add("animate-on-scroll");
       } else {
-        box.classList.remove("show");
+        box.classList.remove("animate-on-scroll");
       }
     });
   };
@@ -106,3 +116,4 @@ import "../styles/global.css";
   // Agregar soporte táctil para dispositivos móviles
   window.addEventListener("touchmove", throttleScroll, { passive: true });
 </script>
+
