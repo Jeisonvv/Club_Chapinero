@@ -44,7 +44,7 @@ import "../styles/global.css";
   </body>
 </html>
 
-<style>
+<style is:global>
   html,
   body {
     margin: 0;
@@ -62,7 +62,6 @@ import "../styles/global.css";
     }
   }
   main {
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,21 +75,18 @@ import "../styles/global.css";
   }
 </style>
 <script type="module">
+  // Menú toggle
   const menuToggle = document.getElementById("menu-toggle");
   const nav = document.querySelector(".header_nav");
 
-  console.log("menuToggle", menuToggle);
-  console.log("nav", nav);
-
   menuToggle?.addEventListener("click", () => {
-    nav.classList.toggle("open");
+    nav?.classList.toggle("open");
   });
-</script>
-<script type="module">
+
+  // Animaciones al hacer scroll
   const boxes = document.querySelectorAll(".box");
   console.log(boxes);
 
-  // Función optimizada con requestAnimationFrame
   const checkBoxes = () => {
     const triggerBottom = (window.innerHeight / 5) * 4;
 
@@ -105,15 +101,13 @@ import "../styles/global.css";
     });
   };
 
-  // Usar requestAnimationFrame para mejorar el rendimiento
   const throttleScroll = () => {
     window.requestAnimationFrame(checkBoxes);
   };
 
   window.addEventListener("scroll", throttleScroll);
   window.addEventListener("load", checkBoxes);
-
-  // Agregar soporte táctil para dispositivos móviles
   window.addEventListener("touchmove", throttleScroll, { passive: true });
 </script>
+
 
