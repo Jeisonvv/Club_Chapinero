@@ -1,7 +1,8 @@
 ---
+
 import { Image } from "astro:assets";
 
-const links = [
+const linksNavar = [
   {
     href: "/",
     text: "Inicio",
@@ -14,7 +15,9 @@ const links = [
     href: "/contacto",
     text: "Contacto",
   },
+
 ];
+
 ---
 
 <header class="header">
@@ -32,13 +35,17 @@ const links = [
     <button class="menu-toggle" id="menu-toggle">☰</button>
     <ul class="nav-links" id="nav-links">
       {
-        links.map((link) => (
-          <li class="button">
-            <a href={link.href} class="button-top" aria-label="{link.text}">
+        linksNavar.map((link) => (
+          <li >
+            <div class="button">
+              <a href={link.href} class="button-top" aria-label="{link.text}">
+              
               {link.text}
             </a>
             <div class="button-bottom" />
             <div class="button-base" />
+            </div>
+            
           </li>
         ))
       }
