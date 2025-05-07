@@ -1,44 +1,21 @@
 ---
-const servicios = [
-  {
-    title: "Mesa de poker",
-    description:
-      "Disfruta de una experiencia única en nuestro club de billares, donde podrás jugar al poker con tus amigos y disfrutar de un ambiente acogedor y divertido.",
-    img: "/Mesa_De_Poker.jpg",
-    alt: "Portada del Club Billares Chapinero",
-  },
-  {
-    title: "Martes de Relámpago",
-    description:
-      "Cada martes, el Club Billares Chapinero organiza un emocionante torneo de billar relámpago, donde los jugadores compiten en partidas rápidas y emocionantes.",
-    img: "/Relampago_mujeres.jpg",
-    alt: "Portada del Club Billares Chapinero",
-  },
-  {
-    title: "Reservas de mesa",
-    description:
-      "Reserva tu mesa de billar con anticipación y asegúrate de disfrutar de una experiencia única en el Club Billares Chapinero.",
-    img: "/reserva_mesa.jpg",
-    alt: "Portada del Club Billares Chapinero",
-  },
-  {
-    title: "Evetos federados",
-    description:
-      "El Club Billares Chapinero organiza eventos federados de billar, donde los jugadores pueden competir en torneos oficiales y demostrar su habilidad en el juego.",
-    img: "/clasificatorio.jpg",
-    alt: "Portada del Club Billares Chapinero",
-  },
-];
+import { getCollection } from "astro:content";
+
+const servicios = await getCollection("services");
+console.log(servicios);
 ---
 
 <div class="container_Carrusel">
   <div class="carrusel">
     {
-      servicios.map((servicio) => (
-        <div class="carrusel-item">
+      servicios.map((servicio, index) => (
+        <div
+          class="carrusel-item"
+          style={`--index: ${index}; --total: ${servicios.length};`}
+        >
           <div class="container-img">
-            <img src={servicio.img} alt={servicio.alt} />
-            <h3>{servicio.title}</h3>
+            <img src={servicio.data.img} alt={servicio.data.title} />
+            <h3>{servicio.data.title}</h3>
           </div>
         </div>
       ))
@@ -50,17 +27,23 @@ const servicios = [
   .container_Carrusel {
     width: 100%;
     height: 300px;
-    perspective: 2000px;
+    perspective: 1000px;
+    padding-top: 30px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
   .carrusel {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 100%; /* ancho fijo centrado */
+    height: 300px;
+    
     transform-style: preserve-3d;
-    display: flex;
     animation: rotate 20s infinite linear;
+    transform-origin: center center;
   }
 
   .carrusel-item {
@@ -69,8 +52,8 @@ const servicios = [
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 100%;
+    width: 65%;
+    height: 90%;
     left: 15%;
     top: 0;
     padding-top: 5px;
@@ -79,6 +62,9 @@ const servicios = [
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transform-style: preserve-3d;
     transition: transform 1s;
+    /* transormacio de*/
+    transform: rotateY(calc(var(--index) * (360deg / var(--total))))
+      translateZ(120px) ;
   }
 
   .container-img {
@@ -97,65 +83,47 @@ const servicios = [
     object-fit: cover;
     margin-top: 2px;
     border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(49, 3, 232, 0.5);
     transition: transform 0.5s ease;
   }
-  /* pausar la animacion*/ 
+  /* pausar la animacion*/
   .container_Carrusel:hover .carrusel {
     animation-play-state: paused;
+    transform: scale(2);
   }
+
+
   
-  
-  .carrusel-item:nth-child(1) {
-    transform: rotateY(0deg) translateZ(120px);
-  }
-  .carrusel-item:nth-child(2) {
-    transform: rotateY(90deg) translateZ(120px);
-  }
-  .carrusel-item:nth-child(3) {
-    transform: rotateY(180deg) translateZ(120px);
-  }
-  .carrusel-item:nth-child(4) {
-    transform: rotateY(270deg) translateZ(120px);
-  }
   @keyframes rotate {
     0% {
       transform: rotateY(0deg);
-    }
-    25% {
-      transform: rotateY(90deg);
-    }
-    50% {
-      transform: rotateY(180deg);
-    }
-    75% {
-      transform: rotateY(270deg);
     }
     100% {
       transform: rotateY(360deg);
     }
   }
   @media screen and (min-width: 768px) {
-  .container_Carrusel {
-    width: 60%;
-    height: 400px;
-  }
-  .carrusel-item {
-    width: 40%;
-    height: 100%;
-    left: 30%;
-  }
+    .container_Carrusel {
+      width: 60%;
+      height: 400px;
+    }
+    .carrusel-item {
+      width: 40%;
+      height: 100%;
+      left: 30%;
+    }
 
-  .carrusel-item:nth-child(1) {
-    transform: rotateY(0deg) translateZ(250px);
+    .carrusel-item:nth-child(1) {
+      transform: rotateY(0deg) translateZ(250px);
+    }
+    .carrusel-item:nth-child(2) {
+      transform: rotateY(90deg) translateZ(250px);
+    }
+    .carrusel-item:nth-child(3) {
+      transform: rotateY(180deg) translateZ(250px);
+    }
+    .carrusel-item:nth-child(4) {
+      transform: rotateY(270deg) translateZ(250px);
+    }
   }
-  .carrusel-item:nth-child(2) {
-    transform: rotateY(90deg) translateZ(250px);
-  }
-  .carrusel-item:nth-child(3) {
-    transform: rotateY(180deg) translateZ(250px);
-  }
-  .carrusel-item:nth-child(4) {
-    transform: rotateY(270deg) translateZ(250px);
-  }
-}
 </style>
