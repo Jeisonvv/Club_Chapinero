@@ -17,10 +17,10 @@ const servicios = await getCollection("services");
             style={`--index: ${index}; --total: ${servicios.length};`}
           >
             <div class="container-img">
-              <a href={`Servicios/${slug}`}>
+              <a href={`servicios/${slug}`}>
                 <img src={img} alt={title} />
               </a>
-              <h3>{title}</h3>
+              <h3 transition:name={`title-${slug}`}>{title}</h3>
             </div>
           </div>
         );
