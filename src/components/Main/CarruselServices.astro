@@ -2,23 +2,29 @@
 import { getCollection } from "astro:content";
 
 const servicios = await getCollection("services");
-console.log(servicios);
+
 ---
 
 <div class="container_Carrusel">
   <div class="carrusel">
     {
-      servicios.map((servicio, index) => (
-        <div
-          class="carrusel-item"
-          style={`--index: ${index}; --total: ${servicios.length};`}
-        >
-          <div class="container-img">
-            <img src={servicio.data.img} alt={servicio.data.title} />
-            <h3>{servicio.data.title}</h3>
+      servicios.map((servicio, index) => {
+        const { slug, data } = servicio;
+        const { title, img } = data;
+        return (
+          <div
+            class="carrusel-item"
+            style={`--index: ${index}; --total: ${servicios.length};`}
+          >
+            <div class="container-img">
+              <a href={`Servicios/${slug}`}>
+                <img src={img} alt={title} />
+              </a>
+              <h3>{title}</h3>
+            </div>
           </div>
-        </div>
-      ))
+        );
+      })
     }
   </div>
 </div>
@@ -40,7 +46,7 @@ console.log(servicios);
     position: relative;
     width: 100%; /* ancho fijo centrado */
     height: 300px;
-    
+
     transform-style: preserve-3d;
     animation: rotate 20s infinite linear;
     transform-origin: center center;
@@ -64,7 +70,7 @@ console.log(servicios);
     transition: transform 1s;
     /* transormacio de*/
     transform: rotateY(calc(var(--index) * (360deg / var(--total))))
-      translateZ(120px) ;
+      translateZ(120px);
   }
 
   .container-img {
@@ -92,8 +98,6 @@ console.log(servicios);
     transform: scale(2);
   }
 
-
-  
   @keyframes rotate {
     0% {
       transform: rotateY(0deg);
