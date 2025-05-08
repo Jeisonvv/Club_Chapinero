@@ -147,21 +147,21 @@ const linksNavar = [
     text-decoration: none;
   }
 
-  .header_nav.open .nav-links {
+  .open  {
     transform: translatey(0);
-    max-height: 100vh;
+    max-height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around;x
     align-items: center;
     transform: translateX(0);
     opacity: 1;
     visibility: visible; /* Ahora sí visible inmediatamente */
     pointer-events: auto;
     transition:
-      transform 0.5s ease,
-      opacity 0.5s ease,
-      linear 0.5s; /* <-- importante */
+        transform 0.5s ease,
+        opacity 0.5s ease,
+        visibility 0s linear 0s;
   }
 
   /* estilos de los botones*/
@@ -285,7 +285,6 @@ const linksNavar = [
 
     .nav-links {
       position: absolute;
-      
       background: #3331318c;
       backdrop-filter: blur(2px);
       top: 0;
@@ -311,11 +310,6 @@ const linksNavar = [
     }
   }
 </style>
-<script>
-   const menuToggle = document.getElementById("menu-toggle");
-  const nav = document.querySelector(".header_nav");
 
-  menuToggle?.addEventListener("click", () => {
-    nav?.classList.toggle("open");
-  });
-</script>
+
+

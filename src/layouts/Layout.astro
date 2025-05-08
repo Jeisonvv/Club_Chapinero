@@ -52,7 +52,8 @@ import "../styles/global.css";
     margin: 0;
     margin-top: 2rem;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
     background: #091f8f;
     background: radial-gradient(
       circle,
@@ -76,34 +77,8 @@ import "../styles/global.css";
     }
   }
 </style>
-<script type="module">
- 
 
-  // Animaciones al hacer scroll
-  const boxes = document.querySelectorAll(".box");
- 
-
-  const checkBoxes = () => {
-    const triggerBottom = (window.innerHeight / 5) * 4;
-
-    boxes.forEach((box) => {
-      const boxTop = box.getBoundingClientRect().top;
-
-      if (boxTop < triggerBottom) {
-        box.classList.add("animate-on-scroll");
-      } else {
-        box.classList.remove("animate-on-scroll");
-      }
-    });
-  };
-
-  const throttleScroll = () => {
-    window.requestAnimationFrame(checkBoxes);
-  };
-
-  window.addEventListener("scroll", throttleScroll);
-  window.addEventListener("load", checkBoxes);
-  window.addEventListener("touchmove", throttleScroll, { passive: true });
-</script>
+<script src="../Scripts/EventScroll.ts" ></script>
+<script src="../Scripts/Menu.ts" ></script>
 
 
