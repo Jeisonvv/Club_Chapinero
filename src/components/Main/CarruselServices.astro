@@ -2,25 +2,28 @@
 import Image from "astro/components/Image.astro";
 const servicios = [
   {
+    slug: "Poker",
     data: {
       title: "Mesa de poker",
       img: "/servicios/Mesa_De_Poker.jpg",
     },
   },
   {
+    slug: "restaurante",
     data: {
       title: "Restaurante",
       img: "/servicios/Restaurante.png",
     },
   },
   {
-
+    slug: "torneos",
     data: {
       title: "Torneos",
       img: "/servicios/Torneos.png",
     },
   },
   {
+    slug: "reserva",
     data: {
       title: "Reserva",
       img: "/servicios/reserva_mesa.jpg",
@@ -42,14 +45,13 @@ const servicios = [
             style={`--index: ${index}; --total: ${servicios.length};`}
           >
             <div class="container-img">
-              <a href="">
+              <a href={`/${servicio.slug}`}>
                 <Image
-                  width={300}
                   src={`${img}`}
                   alt={title}
                   class="carrusel-img"
-                  width={200}
-                  height={200}
+                  width={198}
+                  height={180}
                   format="webp"
                 />
               </a>
@@ -77,6 +79,7 @@ const servicios = [
     justify-content: center;
     align-items: center;
     position: relative;
+    color: #b9b9b9;
   }
 
   .carrusel {
@@ -126,7 +129,8 @@ const servicios = [
     object-fit: cover;
     margin-top: 2px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(49, 3, 232, 0.5);
+    border: solid 2px  #fff;
+    
     transition: transform 0.5s ease;
   }
   /* pausar la animacion*/
