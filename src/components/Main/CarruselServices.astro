@@ -1,15 +1,41 @@
 ---
-import { getCollection } from "astro:content";
+import Image from "astro/components/Image.astro";
+const servicios = [
+  {
+    data: {
+      title: "Mesa de poker",
+      img: "/servicios/Mesa_De_Poker.jpg",
+    },
+  },
+  {
+    data: {
+      title: "Restaurante",
+      img: "/servicios/Restaurante.png",
+    },
+  },
+  {
 
-const servicios = await getCollection("services");
+    data: {
+      title: "Torneos",
+      img: "/servicios/Torneos.png",
+    },
+  },
+  {
+    data: {
+      title: "Reserva de mesa",
+      img: "/servicios/reserva_mesa.jpg",
+    },
+  },
+];
 
+const url = "https://club-chapinero.vercel.app";
 ---
 
 <div class="container_Carrusel">
   <div class="carrusel">
     {
       servicios.map((servicio, index) => {
-        const { slug, data } = servicio;
+        const { data } = servicio;
         const { title, img } = data;
         return (
           <div
@@ -17,13 +43,21 @@ const servicios = await getCollection("services");
             style={`--index: ${index}; --total: ${servicios.length};`}
           >
             <div class="container-img">
-              <a href={`servicios/${slug}`}>
-                <img src={img} alt={title} />
+              <a href="">
+                <Image
+                  width={300}
+                  src={`${img}`}
+                  alt={title}
+                  class="carrusel-img"
+                  width={200}
+                  height={200}
+                  format="webp"
+                />
               </a>
             </div>
             <div class="container-text">
               <h2>{title}</h2>
-              </div>
+            </div>
           </div>
         );
       })
@@ -50,7 +84,6 @@ const servicios = await getCollection("services");
     position: relative;
     width: 100%; /* ancho fijo centrado */
     height: 300px;
-
     transform-style: preserve-3d;
     animation: rotate 20s infinite linear;
     transform-origin: center center;
@@ -87,10 +120,9 @@ const servicios = await getCollection("services");
     align-items: center;
     overflow: hidden;
     object-fit: cover;
-
   }
-  .container-img img {
-    max-width: 95%;
+  .carrusel-img {
+    min-width: 95%;
     height: auto;
     object-fit: cover;
     margin-top: 2px;
