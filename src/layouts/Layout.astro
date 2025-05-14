@@ -10,7 +10,7 @@ const {
   title = "Club Billares Chapinero",
   description = "El mejor lugar para disfrutar del billar en Chapinero",
   image = "/portada1.jpg",
-  url = import.meta.env.PUBLIC_SITE_URL ,
+  urlBase = import.meta.env.PUBLIC_SITE_URL ,
   urlCompleta = import.meta.env.PUBLIC_SITE_URL,
 } = Astro.props;
 ---
@@ -29,14 +29,14 @@ const {
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${url}${image}`} />
+    <meta property="og:image" content={`${urlBase}${image}`} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={urlCompleta} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={`${urlBase}${image}`} />
 
     <title>{title}</title>
     <ClientRouter />

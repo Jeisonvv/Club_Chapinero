@@ -2,15 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 
 
-const baseUrl =import.meta.env.PUBLIC_SITE_URL ;
+const urlBase =import.meta.env.PUBLIC_SITE_URL ;
 ---
 
 <Layout
   title="Torneos"
   description="Torneos de billar en Chapinero"
-  urlCompleta=`${baseUrl}/torneos`
+  urlCompleta=`${urlBase}/torneos`
   image="/servicios/Torneos.png"
-  url={baseUrl}
+  urlBase={urlBase}
 >
   <section class="container">
     <h1>Torneos</h1>
