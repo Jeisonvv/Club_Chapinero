@@ -1,43 +1,15 @@
 ---
 import Image from "astro/components/Image.astro";
+import { servicios } from "../../data/servicios"; // ✔️ Sin type
+import type { Servicio } from "../../data/servicios"; // ✔️ Solo Servicio como type
 
-const servicios = [
-  {
-    slug: "Poker",
-    data: {
-      title: "Mesa de poker",
-      img: "/servicios/Mesa_De_Poker.jpg",
-    },
-  },
-  {
-    slug: "restaurante",
-    data: {
-      title: "Restaurante",
-      img: "/servicios/Restaurante.png",
-    },
-  },
-  {
-    slug: "torneos",
-    data: {
-      title: "Torneos",
-      img: "/servicios/Torneos.png",
-    },
-  },
-  {
-    slug: "reserva",
-    data: {
-      title: "Reserva",
-      img: "/servicios/reserva_mesa.jpg",
-    },
-  },
-];
 
 ---
 
 <div class="container_Carrusel">
   <div class="carrusel">
     {
-      servicios.map((servicio, index) => {
+      servicios.map((servicio: Servicio, index) => {
         const { data, slug } = servicio;
         const { title, img } = data;
         return (
