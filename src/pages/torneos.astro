@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const baseUrl = Astro.site;
 ---
 
 <Layout
   title="Torneos"
   description="Torneos de billar en Chapinero"
-  url="https://club-chapinero.vercel.app"
+  url=`${baseUrl}/servicios/torneos`
   image="/servicios/Torneos.png"
 >
   <section class="container">
