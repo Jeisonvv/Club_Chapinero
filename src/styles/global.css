@@ -11,11 +11,11 @@
   align-items: center;
   justify-content: center;
   margin: 10px;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 10px;
   background: #1f1c1860;
   backdrop-filter: blur(10px);
-  /* box-shadow: 2px 4px 5px rgba(168, 227, 251, 0.3); */
+  box-shadow: 2px 4px 5px rgba(168, 227, 251, 0.3);
   transform: translateX(400%);
   transition: transform 0.4s ease;
 }

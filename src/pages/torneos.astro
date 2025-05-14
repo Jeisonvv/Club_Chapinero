@@ -1,8 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-
-const urlBase =import.meta.env.PUBLIC_SITE_URL ;
+const urlBase = import.meta.env.PUBLIC_SITE_URL;
 ---
 
 <Layout
@@ -13,22 +12,95 @@ const urlBase =import.meta.env.PUBLIC_SITE_URL ;
   urlBase={urlBase}
 >
   <section class="container">
-    <h1>Torneos</h1>
-    <p>
-      ¡Bienvenido a la sección de torneos del Club Billares Chapinero! Aquí
-      encontrarás información sobre nuestros próximos torneos, reglas y cómo
-      participar.
-    </p>
-    <p>
-      Organizamos torneos semanales todos los martes, donde podrás competir con
-      otros jugadores y demostrar tus habilidades. Los torneos son abiertos a
-      todos los niveles, desde principiantes hasta expertos.
-    <p>
-      ¡No te pierdas la oportunidad de demostrar tus habilidades y competir con
-      los mejores!
-    </p>
-    <p>
+    <article class="box">
+      <h1>🏆 Torneos de Billar en Chapinero</h1>
 
-    </p>
-  </section></Layout
->
+      <p>
+        Vive la emoción de la competencia en nuestro club de billar ubicado en
+        el corazón de Chapinero. Organizamos <strong
+          >torneos abiertos y privados de billar profesional y amateur</strong
+        > durante todo el año.
+      </p>
+      <p>
+        Cada evento es una oportunidad para medir tus habilidades, conocer
+        nuevos rivales y disfrutar del mejor ambiente competitivo.
+      </p>
+    </article>
+
+    <article class="box">
+      <h2>Modalidades de juego</h2>
+      <p>
+        estas son algunas de las modalidades que ofrecemos en nuestros torneos:
+      </p>
+      <ul>
+        <li><samp>🎱</samp> Billar a Tres Bandas</li>
+        <li><samp>🎱</samp> Torneos relámpago</li>
+        <li><samp>🎱</samp> Torneos Nacionales</li>
+      </ul>
+    </article>
+
+    <article class="box">
+      <h2>¿Quiénes pueden participar?</h2>
+      <p>
+        Nuestros torneos están abiertos a todos los niveles de habilidad y
+        experiencia. No importa si eres un principiante o un jugador avanzado,
+        ¡todos son bienvenidos!. ya que la estructura de los torneos le pertime
+        a cualquier jugador poder ganar desde un nivel bajo hasta un nivel alto.
+      </p>
+      <ul>
+        <li><samp>🎱</samp>Aficionados que quieran mejorar su nivel.</li>
+        <li><samp>🎱</samp>Jugadores locales con experiencia.</li>
+        <li><samp>🎱</samp>Profesionales que buscan nuevos retos.</li>
+        <li><samp>🎱</samp>Clubes y academias que deseen competir en equipo.</li>
+      </ul>
+    </article>
+
+    <article class="box">
+      <h2>Beneficios de participar</h2>
+      <p>
+        Participar en nuestros torneos no solo te brinda la oportunidad de
+        competir, sino también de disfrutar de una serie de beneficios
+        adicionales:
+      </p>
+      <ul>
+        <li>Premios en efectivo, trofeos y reconocimientos.</li>
+        <li>Puntos acumulables en ranking interno.</li>
+        <li>Experiencia de juego en mesas profesionales.</li>
+        <li>Networking con la comunidad billarista de Bogotá.</li>
+      </ul>
+    </article>
+
+    <article class="box">
+      <h2>Próximos torneos</h2>
+      <p>
+        Consulta en nuestra sección de <strong>eventos próximos</strong> o síguenos
+        en redes sociales para estar al día con las fechas y modalidades de los próximos
+        torneos.
+      </p>
+    </article>
+  </section>
+</Layout>
+<style>
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  ul {
+    width: 80%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+  li {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    text-align: left;
+    position: relative;
+  }
+  li samp {
+    margin-right: 0.5rem;
+  }
+</style>
